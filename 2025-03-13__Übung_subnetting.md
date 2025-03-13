@@ -107,3 +107,5 @@ Nennen Sie den jeweiligen Netz- und Hostanteil der Klassen A, B und C
 | A      | 8 Bit         | 24 Bit     | 255.0.0.0 (/8)      | 16.777.214   |
 | B      | 16 Bit        | 16 Bit     | 255.255.0.0 (/16)   | 65.534       |
 | C      | 24 Bit        | 8 Bit      | 255.255.255.0 (/24) | 254          |
+
+Benutzte Tools: Chatgpt und https://www.calculator.net/ip-subnet-calculator.html?cclass=any&csubnet=28&cip=210.52.190.0&ctype=ipv4&x=Calculate
