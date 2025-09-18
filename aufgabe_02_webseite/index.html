@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Café Sonnenseite — Kleine Café-Seite</title>
+  <meta name="description" content="Café Sonnenseite: Öffnungszeiten, Speisekarte, Team und Reservierung.">
+  <!-- Wähle ein Theme, indem du die passende CSS-Datei aktivierst -->
+  <link rel="stylesheet" href="css/theme-light.css" title="Light">
+  <!-- Alternative Akzent-Themes (manuell umschalten, keine Frameworks/JS nötig) -->
+  <link rel="alternate stylesheet" href="css/theme-accent.css" title="Accent">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Café Sonnenseite</h1>
+      <p class="tagline">Frisch geröstet, freundlich serviert.</p>
+    </div>
+  </header>
+
+  <nav aria-label="Hauptnavigation">
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#speisekarte">Speisekarte</a></li>
+        <li><a href="#galerie">Galerie & Team</a></li>
+        <li><a href="#kontakt">Kontakt & Reservierung</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="inhalt" class="container">
+    <section id="ueber-uns" aria-labelledby="ueber-uns-titel">
+      <h2 id="ueber-uns-titel">Über uns</h2>
+      <p>Im <strong>Café Sonnenseite</strong> dreht sich alles um guten Kaffee und gemütliche Momente. Unsere Bohnen stammen von kleinen Röstereien, unsere Kuchen sind hausgemacht.</p>
+      <figure class="hero">
+        <img src="images/cafe_front.svg" alt="Außenansicht des Café Sonnenseite">
+        <figcaption>Willkommen auf der Sonnenseite der Stadt.</figcaption>
+      </figure>
+    </section>
+
+    <section id="speisekarte" aria-labelledby="speisekarte-titel">
+      <h2 id="speisekarte-titel">Speisekarte</h2>
+      <p>Hier findest du eine Auswahl unserer Getränke und Snacks. Preise in EUR.</p>
+
+      <!-- Tabelle mit caption, thead, tbody und mindestens 10 Datenzeilen -->
+      <table>
+        <caption>Getränke & Snacks — Übersicht</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Artikel</th>
+            <th scope="col">Beschreibung</th>
+            <th scope="col">Preis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Espresso</td><td>Kräftig, einfach</td><td>2,20</td></tr>
+          <tr><td>2</td><td>Doppio</td><td>Doppelter Espresso</td><td>3,60</td></tr>
+          <tr><td>3</td><td>Americano</td><td>Espresso mit heißem Wasser</td><td>2,80</td></tr>
+          <tr><td>4</td><td>Cappuccino</td><td>Espresso mit Milch & Schaum</td><td>3,20</td></tr>
+          <tr><td>5</td><td>Latte Macchiato</td><td>Viel Milch, milder Kaffee</td><td>3,60</td></tr>
+          <tr><td>6</td><td>Flat White</td><td>Seidiger Mikroschaum</td><td>3,80</td></tr>
+          <tr><td>7</td><td>Heiße Schokolade</td><td>Mit Sahne auf Wunsch</td><td>3,40</td></tr>
+          <tr><td>8</td><td>Hauskuchen</td><td>Wechselnde Sorten</td><td>3,00</td></tr>
+          <tr><td>9</td><td>Veganes Sandwich</td><td>Frisches Gemüse & Hummus</td><td>4,90</td></tr>
+          <tr><td>10</td><td>Quiche</td><td>Herzhaft, vegetarisch</td><td>4,50</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="galerie" aria-labelledby="galerie-titel">
+      <h2 id="galerie-titel">Galerie & Team</h2>
+      <div class="gallery">
+        <figure>
+          <img src="images/latte_art.svg" alt="Tasse Kaffee mit Latte Art">
+          <figcaption>Latte Art vom Feinsten</figcaption>
+        </figure>
+        <figure>
+          <img src="images/team_barista.svg" alt="Unser Barista-Team hinter der Theke">
+          <figcaption>Unser Barista-Team</figcaption>
+        </figure>
+        <figure>
+          <img src="images/beans.svg" alt="Kaffeebohnen in einer Schale">
+          <figcaption>Ausgewählte Bohnen</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <aside aria-label="Öffnungszeiten und Hinweise">
+      <h2>Öffnungszeiten</h2>
+      <ul class="hours">
+        <li>Mo–Fr: 08:00–18:00</li>
+        <li>Sa: 09:00–18:00</li>
+        <li>So: 10:00–16:00</li>
+      </ul>
+      <p class="note">Tipp: Bring deine eigene Tasse mit und spare 20¢.</p>
+    </aside>
+
+    <section id="kontakt" aria-labelledby="kontakt-titel">
+      <h2 id="kontakt-titel">Kontakt & Reservierung</h2>
+      <p>Reserviere einen Tisch oder schreib uns eine Nachricht.</p>
+
+      <!-- Formular -->
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Reservierungsformular</legend>
+          <div class="grid">
+            <label>
+              Name
+              <input type="text" name="name" required placeholder="Vor- und Nachname">
+            </label>
+            <label>
+              E-Mail
+              <input type="email" name="email" required placeholder="beispiel@mail.de">
+            </label>
+            <label>
+              Datum
+              <input type="date" name="date" required>
+            </label>
+            <label>
+              Uhrzeit
+              <input type="time" name="time" required>
+            </label>
+            <label>
+              Personen
+              <input type="number" name="persons" min="1" max="12" value="2" required>
+            </label>
+          </div>
+          <label>
+            Nachricht
+            <textarea name="message" rows="4" placeholder="Allergien, Wünsche …"></textarea>
+          </label>
+          <div class="actions">
+            <button type="submit">Jetzt reservieren</button>
+            <button type="reset" class="secondary">Zurücksetzen</button>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Café Sonnenseite — Handgemacht mit HTML & CSS.</p>
+    </div>
+  </footer>
+
+  <!-- Dokumentation
+    KI-Unterstützung: Strukturvorschlag, Beispieltexte, Grundlayout und CSS wurden von einer KI generiert.
+    Eigenleistung (zu ergänzen/anzupassen): Inhalte (Texte/Preise), Bilder ersetzen, Farben/Typografie feinjustieren, evtl. zusätzliche Abschnitte.
+    Erfahrungen: Die Trennung in zwei Themes erleichtert visuelle Experimente. Tabellen- und Formularstil wurden so gewählt, dass Lesbarkeit und Bedienbarkeit im Vordergrund stehen.
+  -->
+</body>
+</html>

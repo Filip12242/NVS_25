@@ -1,0 +1,10 @@
+Präsentation: Das <video>-Element in HTML5
+
+Das <video>-Element ist eine wichtige Neuerung von HTML5.
+Es ermöglicht das direkte Einbinden von Videos auf Webseiten – ganz ohne zusätzliche Plugins wie Flash.
+Man kann verschiedene Attribute nutzen, z. B. controls (Steuerungselemente anzeigen), autoplay (automatisch abspielen) oder loop (Wiederholung).
+Außerdem lassen sich mehrere Videoformate angeben, damit das Video in allen Browsern funktioniert.
+
+Beispielcode:
+
+Ich habe das genommen, weil es die Einbindung von Videos auf websiten vereinfacht hat.

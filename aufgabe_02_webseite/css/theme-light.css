@@ -1,0 +1,136 @@
+
+/* Theme: Light — ruhige, helle Gestaltung, serifenlose Schrift */
+/* Hinweis: Keine Frameworks. Reines CSS. */
+
+:root{
+  --bg: #faf8f5;
+  --text: #222;
+  --muted: #6b6b6b;
+  --primary: #5c7cfa;
+  --surface: #ffffff;
+  --border: #e6e0d9;
+  --table-stripe: #f3efe9;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+  line-height:1.6;
+}
+
+.container{
+  width:min(1100px, 92%);
+  margin-inline:auto;
+  padding: 0.5rem 0;
+}
+
+header{
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  padding:1.25rem 0;
+}
+h1{margin:0 0 0.25rem 0; font-size:clamp(1.6rem, 2vw + 1rem, 2.4rem)}
+.tagline{color:var(--muted); margin:0}
+
+nav{
+  background:var(--surface);
+  position:sticky; top:0; z-index:10;
+  border-bottom:1px solid var(--border);
+}
+.nav-list{
+  list-style:none; margin:0; padding:0; display:flex; gap:1rem; flex-wrap:wrap;
+}
+.nav-list a{
+  display:block; padding:0.75rem 0.5rem; text-decoration:none; color:var(--text);
+  border-radius:10px;
+}
+.nav-list a:hover, .nav-list a:focus{ background:var(--table-stripe)}
+
+main{ padding:1rem 0 2rem}
+
+h2{ margin-top:2rem; font-size:1.5rem}
+
+.hero img{ width:100%; height:auto; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.06)}
+
+table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  margin:1rem 0 1.5rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+}
+caption{ text-align:left; padding:0.75rem 1rem; font-weight:600}
+thead th{
+  text-align:left;
+  padding:0.75rem 1rem;
+  background:linear-gradient(to bottom, #fff, #f6f2ed);
+  border-bottom:1px solid var(--border);
+}
+tbody td{
+  padding:0.65rem 1rem;
+  border-bottom:1px solid var(--border);
+}
+tbody tr:nth-child(even){ background:var(--table-stripe)}
+
+.gallery{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1rem;
+}
+.gallery img{ width:100%; height:auto; border-radius:10px; border:1px solid var(--border)}
+
+aside{
+  background:var(--surface);
+  border:1px solid var(--border);
+  padding:1rem;
+  border-radius:12px;
+  margin:2rem 0;
+}
+.hours{ margin:0.5rem 0 0 0; padding-left:1rem}
+.note{ color:var(--muted)}
+
+form fieldset{ border:1px solid var(--border); border-radius:12px; padding:1rem; background:var(--surface)}
+form legend{ padding:0 0.4rem; font-weight:600}
+form .grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:0.75rem;
+  margin-bottom:0.75rem;
+}
+label{ display:flex; flex-direction:column; gap:0.25rem; font-weight:500}
+input, textarea{
+  padding:0.6rem 0.7rem;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:#fff;
+  color:var(--text);
+}
+input:focus, textarea:focus{ outline:2px solid color-mix(in oklab, var(--primary) 35%, white)}
+
+.actions{ display:flex; gap:0.5rem; margin-top:0.5rem}
+button{
+  padding:0.6rem 0.9rem;
+  border-radius:999px;
+  border:1px solid color-mix(in oklab, var(--primary) 40%, black 5%);
+  background:var(--primary);
+  color:white;
+  cursor:pointer;
+}
+button.secondary{
+  background:#fff; color:var(--text);
+  border:1px solid var(--border);
+}
+button:hover{ filter:brightness(1.05)}
+button:active{ transform:translateY(1px)}
+
+footer{
+  border-top:1px solid var(--border);
+  background:var(--surface);
+  padding:1rem 0;
+  color:var(--muted);
+  font-size:0.95rem;
+}

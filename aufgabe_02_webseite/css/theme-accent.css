@@ -1,0 +1,139 @@
+
+/* Theme: Accent — kräftige Farben, andere Typografie, kontrastreich */
+
+:root{
+  --bg: #0b0b12;
+  --text: #f4f4ff;
+  --muted: #b2b2d1;
+  --primary: #ff5c93;
+  --surface: #141422;
+  --border: #2c2c42;
+  --table-stripe: #1b1b2d;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family: "Gill Sans", "Trebuchet MS", "Segoe UI", Roboto, Arial, sans-serif;
+  line-height:1.65;
+  letter-spacing:0.2px;
+}
+
+.container{
+  width:min(1100px, 92%);
+  margin-inline:auto;
+  padding: 0.5rem 0;
+}
+
+header{
+  background:linear-gradient(120deg, #1a1a2f, #241a2f 60%, #1a242f);
+  border-bottom:1px solid var(--border);
+  padding:2rem 0;
+}
+h1{margin:0 0 0.3rem 0; font-size:clamp(1.7rem, 2.2vw + 1rem, 2.6rem)}
+.tagline{color:var(--muted); margin:0}
+
+nav{
+  background:var(--surface);
+  position:sticky; top:0; z-index:10;
+  border-bottom:1px solid var(--border);
+}
+.nav-list{
+  list-style:none; margin:0; padding:0; display:flex; gap:1rem; flex-wrap:wrap;
+}
+.nav-list a{
+  display:block; padding:0.75rem 0.8rem; text-decoration:none; color:var(--text);
+  border-radius:12px; border:1px solid transparent;
+}
+.nav-list a:hover, .nav-list a:focus{ background:#1f1f31; border-color:#313158}
+
+main{ padding:1rem 0 2rem}
+
+h2{ margin-top:2rem; font-size:1.55rem; color:var(--primary)}
+
+.hero img{ width:100%; height:auto; border-radius:14px; box-shadow:0 10px 30px rgba(255,92,147,.12); border:1px solid var(--border)}
+
+table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  margin:1rem 0 1.5rem;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+}
+caption{ text-align:left; padding:0.9rem 1.1rem; font-weight:700; color:var(--primary)}
+thead th{
+  text-align:left;
+  padding:0.85rem 1.1rem;
+  background:linear-gradient( to bottom, #1f1f31, #1a1a2a);
+  border-bottom:1px solid var(--border);
+}
+tbody td{
+  padding:0.7rem 1.1rem;
+  border-bottom:1px solid var(--border);
+}
+tbody tr:nth-child(even){ background:var(--table-stripe)}
+
+.gallery{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1rem;
+}
+.gallery img{ width:100%; height:auto; border-radius:12px; border:1px solid var(--border)}
+
+aside{
+  background:var(--surface);
+  border:1px solid var(--border);
+  padding:1rem;
+  border-radius:14px;
+  margin:2rem 0;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+.hours{ margin:0.5rem 0 0 0; padding-left:1rem}
+.note{ color:var(--muted)}
+
+form fieldset{ border:1px solid var(--border); border-radius:14px; padding:1rem; background:var(--surface)}
+form legend{ padding:0 0.4rem; font-weight:700; color:var(--primary)}
+form .grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:0.75rem;
+  margin-bottom:0.75rem;
+}
+label{ display:flex; flex-direction:column; gap:0.25rem; font-weight:600}
+input, textarea{
+  padding:0.65rem 0.8rem;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#0f0f1a;
+  color:var(--text);
+}
+input:focus, textarea:focus{ outline:2px solid color-mix(in oklab, var(--primary) 30%, white)}
+
+.actions{ display:flex; gap:0.5rem; margin-top:0.5rem}
+button{
+  padding:0.65rem 1rem;
+  border-radius:999px;
+  border:1px solid color-mix(in oklab, var(--primary) 45%, black 5%);
+  background:var(--primary);
+  color:#141422;
+  cursor:pointer;
+  font-weight:700;
+  box-shadow:0 6px 16px rgba(255,92,147,.18);
+}
+button.secondary{
+  background:transparent; color:var(--text);
+  border:1px solid var(--border);
+}
+button:hover{ filter:brightness(1.05)}
+button:active{ transform:translateY(1px)}
+
+footer{
+  border-top:1px solid var(--border);
+  background:var(--surface);
+  padding:1rem 0;
+  color:var(--muted);
+  font-size:0.95rem;
+}
