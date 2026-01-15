@@ -261,25 +261,3 @@ body:has(#theme-toggle:checked) .theme__icon::before {
 }
 
 
-
-
-.muted {
-  color: var(--muted);
-  margin-top: 0.25rem;
-}
-
-
-.map-wrapper {
-  aspect-ratio: 16 / 10;
-  width: 100%;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-}
-
-.map-wrapper iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-}
