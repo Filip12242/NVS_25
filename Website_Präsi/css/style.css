@@ -1,10 +1,15 @@
 :root {
+  /* Default: Dark */
   --bg: #0f172a;
   --card: #1e293b;
   --text: #e5e7eb;
+  --muted: #94a3b8;
+  --border: #334155;
+  --header: #020617;
   --accent: #38bdf8;
   --space: 1rem;
 }
+
 
 * {
   box-sizing: border-box;
@@ -19,14 +24,15 @@ body {
 
 .header {
   position: sticky;
-  z-index: 1000;
   top: 0;
-  background: #020617;
+  z-index: 9999;
+  background: var(--header);
   padding: var(--space);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 
 .nav {
   display: flex;
@@ -83,7 +89,7 @@ table {
 }
 
 th, td {
-  border: 1px solid #334155;
+  border: 1px solid var(--border);
   padding: 0.4rem;
 }
 
@@ -108,10 +114,12 @@ th, td {
 
 button {
   background: var(--accent);
+  color: var(--bg);
   border: none;
   padding: 0.6rem;
   cursor: pointer;
 }
+
 
 button:hover {
   opacity: 0.8;
@@ -132,7 +140,7 @@ button:hover {
   font-size: 0.8rem;
 }
 
-/* Responsive */
+
 @media (max-width: 800px) {
   .layout {
     grid-template-columns: 1fr;
@@ -143,16 +151,15 @@ button:hover {
   }
 }
 
-.nav {
-  display: flex;
-  gap: var(--space);
-  flex-wrap: wrap;          /* erlaubt Umbruch */
-  justify-content: flex-end;
+.nav a:hover {
+  background: var(--accent);
+  color: var(--bg);
 }
+
 
 @media (max-width: 500px) {
   .header {
-    flex-direction: column; /* Titel oben, Menü darunter */
+    flex-direction: column; 
     align-items: flex-start;
     gap: 0.5rem;
   }
@@ -178,6 +185,67 @@ button:hover {
 
 .sidebar-image:hover {
   opacity: 1;
+}
+
+/* Theme Toggle UI */
+.theme {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 0.75rem;
+}
+
+.theme__toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.theme__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.theme__label:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.theme__text {
+  font-size: 0.9rem;
+}
+
+/* Light mode: wenn Toggle aktiv ist, ändern wir Variablen über :has() */
+body:has(#theme-toggle:checked) {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --border: #cbd5e1;
+  --header: #e2e8f0;
+  --accent: #2563eb;
+}
+
+/* Optional: Icon wechselt */
+body:has(#theme-toggle:checked) .theme__icon {
+  content: "☀";
+}
+
+/* Mobile: Theme + Nav schön umbrechen */
+@media (max-width: 500px) {
+  .header {
+    align-items: stretch;
+  }
+
+  .theme {
+    margin-right: 0;
+  }
 }
 
 
