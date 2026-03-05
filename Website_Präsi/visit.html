@@ -1,64 +1,76 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Besuchsanfrage</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<header class="header">
-  <h1>Besuch</h1>
-  <div class="theme">
-  <input type="checkbox" id="theme-toggle" class="theme__toggle">
-  <label for="theme-toggle" class="theme__label" title="Dark/Light umschalten">
-    <span class="theme__icon" aria-hidden="true"></span>
-    <span class="theme__text">Theme</span>
-  </label>
-</div>
+  <header class="header">
+    <h1>Besuch</h1>
+    <div class="theme">
+      <nav class="nav">
+        <a href="index.html">Start</a>
+        <a href="history.html">Geschichte</a>
+        <a href="visit.html">Besuch</a>
+      </nav>
+      <div class="theme">
+        <input type="checkbox" id="theme-toggle" class="theme__toggle">
+        <label for="theme-toggle" class="theme__label" title="High/Low Radiation Mode">
+          <span class="theme__icon" aria-hidden="true"></span>
+          <span class="theme__text">Alert Mode</span>
+        </label>
+      </div>
+  </header>
 
-  <nav class="nav">
-    <a href="index.html">Start</a>
-    <a href="history.html">Geschichte</a>
-    <a href="visit.html">Besuch</a>
-  </nav>
-</header>
+  <section class="hero-section" style="height: 30vh; min-height: 200px;">
+    <div class="hero-content">
+      <h2>Sperrzone Betreten</h2>
+      <p>Beantragen Sie hier Ihren Zugang für Pripjat und das Reaktorgelände</p>
+    </div>
+  </section>
 
-<main class="content single">
-  <form class="form">
-    <h2>Besuchsanfrage</h2>
+  <main class="content single">
+    <div class="card form-card">
+      <form class="form">
+        <h2>Besuchsanfrage</h2>
 
-    <label>
-      Name
-      <input type="text" required>
-    </label>
+        <label>
+          Name
+          <input type="text" required>
+        </label>
 
-    <label>
-      E-Mail
-      <input type="email" required>
-    </label>
+        <label>
+          E-Mail
+          <input type="email" required>
+        </label>
 
-    <label>
-      Besuchsart
-      <select>
-        <option>Touristisch</option>
-        <option>Wissenschaftlich</option>
-      </select>
-    </label>
+        <label>
+          Besuchsart
+          <select>
+            <option>Touristisch</option>
+            <option>Wissenschaftlich</option>
+          </select>
+        </label>
 
-    <label>
-      Nachricht
-      <textarea rows="4"></textarea>
-    </label>
+        <label>
+          Nachricht
+          <textarea rows="4"></textarea>
+        </label>
 
-    <button type="submit">Absenden</button>
-  </form>
-</main>
+        <button type="submit">Antrag Stellen</button>
+      </form>
+    </div>
+  </main>
 
-<footer class="footer">
-  <p>Schulprojekt – Formular</p>
-</footer>
+  <footer class="footer">
+    <p>Schulprojekt – Formular</p>
+  </footer>
 
 </body>
+
 </html>

@@ -1,125 +1,136 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tschernobyl – Überblick</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<header class="header">
-  <h1>Tschernobyl</h1>
-  <div class="theme">
-  <input type="checkbox" id="theme-toggle" class="theme__toggle">
-  <label for="theme-toggle" class="theme__label" title="Dark/Light umschalten">
-    <span class="theme__icon" aria-hidden="true"></span>
-    <span class="theme__text">Theme</span>
-  </label>
-</div>
+  <header class="header">
+    <div class="header-content">
+      <h1>Tschernobyl</h1>
+      <nav class="nav">
+        <a href="index.html">Start</a>
+        <a href="history.html">Geschichte</a>
+        <a href="visit.html">Besuch</a>
+      </nav>
+    </div>
+    <div class="theme">
+      <input type="checkbox" id="theme-toggle" class="theme__toggle">
+      <label for="theme-toggle" class="theme__label" title="High/Low Radiation Mode">
+        <span class="theme__icon" aria-hidden="true"></span>
+        <span class="theme__text">Alert Mode</span>
+      </label>
+    </div>
+  </header>
 
-  <nav class="nav">
-    <a href="index.html">Start</a>
-    <a href="history.html">Geschichte</a>
-    <a href="visit.html">Besuch</a>
-  </nav>
-</header>
-
-<main class="layout">
-  <section class="content">
-    <article class="card">
-      <h2>Was ist Tschernobyl?</h2>
-      <p>
-Tschernobyl ist vor allem bekannt als Schauplatz der schwersten
-Nuklearkatastrophe der Geschichte. Der Name steht für das Kernkraftwerk
-nahe der ukrainischen Stadt Pripjat, das in den 1970er-Jahren von der
-Sowjetunion errichtet wurde. Am 26. April 1986 kam es dort zu einer
-Explosion im Reaktorblock 4, ausgelöst durch einen fehlgeschlagenen
-Sicherheitstest und schwerwiegende Konstruktions- sowie Bedienfehler.
-</p>
-
-<p>
-Durch die Explosion und den anschließenden Brand wurden große Mengen
-radioaktiver Stoffe freigesetzt, die sich über weite Teile Europas
-verteilten. Besonders betroffen waren die Ukraine, Belarus und Russland.
-Die nahegelegene Stadt Pripjat musste vollständig evakuiert werden und
-ist bis heute eine Geisterstadt.
-</p>
-
-<p>
-Heute steht Tschernobyl nicht nur für die Risiken der Kernenergie,
-sondern auch für politische Fehlentscheidungen, mangelnde Transparenz
-und die langfristigen Folgen von Umweltkatastrophen. Das Gebiet rund um
-das Kraftwerk ist eine Sperrzone, die nur unter strengen Auflagen
-betreten werden darf.
-</p>
-
-    </article>
-
-    <article class="card">
-      <h2>Wichtige Fakten</h2>
-      <ul>
-        <li>Explosion in Reaktor 4</li>
-        <li>Evakuierung von Pripjat</li>
-        <li>Langfristige radioaktive Belastung</li>
-      </ul>
-    </article>
-
-    <article class="card">
-      <h2>Video-Dokumentation</h2>
-      <div class="video-wrapper">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/J-zYPopadek?si=3Ln_HOSd_Lqu-gHU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-    </article>
-
-<article class="card">
-  <h2>Strahlungskarte (Live)</h2>
-  <p class="muted">
-    Interaktive Karte von SaveEcoBot. Je nach Browser kann das Laden ein paar Sekunden dauern.
-  </p>
-  <div class="map-wrapper" role="region" aria-label="Interaktive Strahlungskarte">
-    <iframe
-      src="https://www.saveecobot.com/en/radiation-maps#6/48.872/31.102/gamma+usv/ara+arc+clua+cuc+crc"
-      title="SaveEcoBot – Radiation Map"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      allowfullscreen>
-    </iframe>
-  </div>
-</article>
+  <section class="hero-section">
+    <div class="hero-content">
+      <h2>Das Vermächtnis von Block 4</h2>
+      <p>Erkunden Sie die Geschichte der größten Nuklearkatastrophe Europas.</p>
+    </div>
   </section>
 
-  <aside class="sidebar">
-    <h3>Schnellübersicht</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Fakt</th>
-          <th>Wert</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Jahr</td>
-          <td>1986</td>
-        </tr>
-        <tr>
-          <td>Ort</td>
-          <td>Ukraine</td>
-        </tr>
-        <tr>
-          <td>Reaktor</td>
-          <td>RBMK</td>
-        </tr>
-      </tbody>
-    </table>
-    <img class="sidebar-image" src="2000.png" alt="Kernkraftwerk Tschernobyl nach dem Unfall">
-</aside>
-</main>
+  <main class="layout">
+    <section class="content">
+      <article class="card">
+        <h2>Was ist Tschernobyl?</h2>
+        <p>
+          Tschernobyl ist vor allem bekannt als Schauplatz der schwersten
+          Nuklearkatastrophe der Geschichte. Der Name steht für das Kernkraftwerk
+          nahe der ukrainischen Stadt Pripjat, das in den 1970er-Jahren von der
+          Sowjetunion errichtet wurde. Am 26. April 1986 kam es dort zu einer
+          Explosion im Reaktorblock 4, ausgelöst durch einen fehlgeschlagenen
+          Sicherheitstest und schwerwiegende Konstruktions- sowie Bedienfehler.
+        </p>
 
-<footer class="footer">
-  <p>Schulprojekt – Webentwicklung</p>
-</footer>
+        <p>
+          Durch die Explosion und den anschließenden Brand wurden große Mengen
+          radioaktiver Stoffe freigesetzt, die sich über weite Teile Europas
+          verteilten. Besonders betroffen waren die Ukraine, Belarus und Russland.
+          Die nahegelegene Stadt Pripjat musste vollständig evakuiert werden und
+          ist bis heute eine Geisterstadt.
+        </p>
+
+        <p>
+          Heute steht Tschernobyl nicht nur für die Risiken der Kernenergie,
+          sondern auch für politische Fehlentscheidungen, mangelnde Transparenz
+          und die langfristigen Folgen von Umweltkatastrophen. Das Gebiet rund um
+          das Kraftwerk ist eine Sperrzone, die nur unter strengen Auflagen
+          betreten werden darf.
+        </p>
+
+      </article>
+
+      <article class="card">
+        <h2>Wichtige Fakten</h2>
+        <ul>
+          <li>Explosion in Reaktor 4</li>
+          <li>Evakuierung von Pripjat</li>
+          <li>Langfristige radioaktive Belastung</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Video-Dokumentation</h2>
+        <div class="video-wrapper">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/J-zYPopadek?si=3Ln_HOSd_Lqu-gHU"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Strahlungskarte (Live)</h2>
+        <p class="muted">
+          Interaktive Karte von SaveEcoBot. Je nach Browser kann das Laden ein paar Sekunden dauern.
+        </p>
+        <div class="map-wrapper" role="region" aria-label="Interaktive Strahlungskarte">
+          <iframe src="https://www.saveecobot.com/en/radiation-maps#6/48.872/31.102/gamma+usv/ara+arc+clua+cuc+crc"
+            title="SaveEcoBot – Radiation Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </article>
+    </section>
+
+    <aside class="sidebar">
+      <h3>Schnellübersicht</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Fakt</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jahr</td>
+            <td>1986</td>
+          </tr>
+          <tr>
+            <td>Ort</td>
+            <td>Ukraine</td>
+          </tr>
+          <tr>
+            <td>Reaktor</td>
+            <td>RBMK</td>
+          </tr>
+        </tbody>
+      </table>
+      <img class="sidebar-image" src="2000.png" alt="Kernkraftwerk Tschernobyl nach dem Unfall">
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <p>Schulprojekt – Webentwicklung</p>
+  </footer>
 
 </body>
+
 </html>
