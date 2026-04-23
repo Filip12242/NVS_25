@@ -1,4 +1,3 @@
-// Stufe 1: Einfaches Promise
 function holeBrief(inhalt) {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -7,20 +6,16 @@ function holeBrief(inhalt) {
     });
 }
 
-// Stufe 2: Promise Chaining
 function stempelBrief(brief) {
-    return new Promise((resolve) => {
-        resolve(brief + " [Gestempelt]");
-    });
+    return Promise.resolve(brief + " [Gestempelt]");
 }
 
 function versendeBrief(brief) {
-    return new Promise((resolve) => {
-        resolve(brief + " -> Versendet!");
-    });
+    return Promise.resolve(brief + " -> Versendet!");
 }
 
 holeBrief("Hallo Welt")
-    .then((brief) => stempelBrief(brief))
-    .then((brief) => versendeBrief(brief))
-    .then((brief) => console.log(brief));
+    .then(stempelBrief)
+    .then(versendeBrief)
+    .then(console.log)
+    .catch(console.error);
