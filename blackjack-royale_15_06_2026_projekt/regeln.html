@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blackjack Royale – Regeln</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90' fill='%23d4af37'>♠</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="kopfzeile">
+  <a class="logo" href="index.html"><span class="logo-pik">♠</span>Blackjack <em>Royale</em></a>
+  <nav class="navigation">
+    <a href="index.html">Spiel</a>
+    <a href="regeln.html" class="aktiv">Regeln</a>
+    <a href="statistik.html">Statistik</a>
+  </nav>
+</header>
+
+<main class="inhalt">
+  <h1 class="seitentitel">So spielst du <em>Blackjack</em></h1>
+  <p class="unterzeile">Das Ziel: näher an 21 Punkte kommen als der Dealer – ohne dich zu überkaufen.</p>
+  <div class="farben-deko"><span class="schwarz">♠</span><span class="rot">♥</span><span class="schwarz">♣</span><span class="rot">♦</span></div>
+
+  <section class="panel-karte">
+    <h2>Spielablauf</h2>
+    <ol id="ablaufListe"></ol>
+  </section>
+
+  <section class="panel-karte">
+    <h2>Kartenwerte</h2>
+    <table class="werte">
+      <thead>
+        <tr><th>Karte</th><th>Wert</th></tr>
+      </thead>
+      <tbody id="kartenwerteTabelle"></tbody>
+    </table>
+  </section>
+
+  <section class="panel-karte">
+    <h2>Auszahlungen</h2>
+    <table class="werte">
+      <thead>
+        <tr><th>Ergebnis</th><th>Auszahlung</th></tr>
+      </thead>
+      <tbody id="auszahlungenTabelle"></tbody>
+    </table>
+  </section>
+
+  <section class="panel-karte">
+    <h2>Der Dealer</h2>
+    <p>
+      Der Dealer hat keine Wahlfreiheit: Er deckt seine verdeckte Karte erst auf, wenn du fertig bist,
+      und muss dann so lange Karten ziehen, bis er <strong>mindestens 17 Punkte</strong> erreicht hat.
+      Überkauft er sich dabei (mehr als 21), gewinnst du automatisch.
+    </p>
+  </section>
+
+  <section class="panel-karte">
+    <h2>Wichtige Begriffe</h2>
+    <ul id="begriffeListe"></ul>
+  </section>
+</main>
+
+<footer class="fusszeile">
+  Karten &amp; Mischen über die <a href="https://deckofcardsapi.com" target="_blank" rel="noopener">Deck of Cards API</a> · Schulprojekt 2026
+</footer>
+
+<script src="js/regeln.js"></script>
+</body>
+</html>

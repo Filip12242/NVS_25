@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blackjack Royale – Spiel</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90' fill='%23d4af37'>♠</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="spielseite">
+
+<header class="kopfzeile">
+  <a class="logo" href="index.html"><span class="logo-pik">♠</span>Blackjack <em>Royale</em></a>
+  <nav class="navigation">
+    <a href="index.html" class="aktiv">Spiel</a>
+    <a href="regeln.html">Regeln</a>
+    <a href="statistik.html">Statistik</a>
+  </nav>
+  <button class="ton-knopf" id="tonKnopf" title="Sound an/aus">🔊</button>
+  <div class="guthaben-anzeige" id="guthabenAnzeige">…</div>
+  <button class="kasse-knopf" id="einzahlenBtn" title="Einzahlen (Cashier)">+</button>
+</header>
+
+<main class="spielbereich">
+
+  <!-- Linkes Panel: der Kartenschlitten (Shoe) -->
+  <aside class="seitenleiste">
+    <h2 class="seiten-titel">Shoe</h2>
+    <div class="info-zeile"><span>Decks</span><strong>6</strong></div>
+    <div class="info-zeile"><span>Cards left</span><strong id="shoeKarten">–</strong></div>
+    <div class="shoe-balken"><div class="shoe-fuellung" id="shoeFuellung"></div></div>
+    <p class="seiten-hinweis">Automatic reshuffle below 60 cards – just like a real cut card.</p>
+    <div class="seiten-deko">♠ ♥ ♣ ♦</div>
+  </aside>
+
+  <section class="tisch">
+    <div class="hand-bereich">
+      <div class="hand-titel">Dealer <span class="punkte" id="dealerPunkte">–</span></div>
+      <div class="karten" id="dealerKarten"></div>
+    </div>
+
+    <div class="tisch-mitte">
+      <svg class="tisch-schriftzug" viewBox="0 0 600 90" aria-hidden="true">
+        <path id="bogen" d="M 60 80 Q 300 0 540 80" fill="none"/>
+        <text><textPath href="#bogen" startOffset="50%" text-anchor="middle">★ BLACKJACK PAYS 3 TO 2 ★</textPath></text>
+      </svg>
+      <div class="nachricht" id="nachricht">…</div>
+      <div class="einsatz-spot leer" id="einsatzSpot">
+        <div class="einsatz-stapel" id="einsatzStapel"></div>
+        <span class="einsatz-betrag" id="einsatzAnzeige">0&nbsp;€</span>
+      </div>
+    </div>
+
+    <div class="hand-bereich">
+      <div class="hand-titel">Your Hand <span class="punkte" id="spielerPunkte">–</span></div>
+      <div class="karten" id="spielerKarten"></div>
+    </div>
+
+    <section class="steuerung">
+
+      <!-- Phase 1: Einsatz wählen -->
+      <div class="panel einsatz-panel" id="einsatzPanel">
+        <div class="chips">
+          <button class="chip chip-10"  data-wert="10">10</button>
+          <button class="chip chip-25"  data-wert="25">25</button>
+          <button class="chip chip-50"  data-wert="50">50</button>
+          <button class="chip chip-100" data-wert="100">100</button>
+          <button class="chip chip-500" data-wert="500">500</button>
+        </div>
+        <div class="einsatz-buttons">
+          <button class="btn btn-sekundaer" id="einsatzLoeschenBtn">Clear <kbd>C</kbd></button>
+          <button class="btn btn-gold" id="gebenBtn" disabled>Deal <kbd>␣</kbd></button>
+        </div>
+      </div>
+
+      <!-- Phase 2: Spielzüge -->
+      <div class="panel aktion-panel versteckt" id="aktionPanel">
+        <button class="btn btn-gruen" id="hitBtn">Hit <kbd>H</kbd></button>
+        <button class="btn btn-gold" id="standBtn">Stand <kbd>S</kbd></button>
+        <button class="btn btn-sekundaer" id="doubleBtn">Double Down <kbd>D</kbd></button>
+      </div>
+
+      <!-- Phase 3: Runde vorbei -->
+      <div class="panel runde-panel versteckt" id="rundePanel">
+        <button class="btn btn-gold" id="neueRundeBtn"><span id="neueRundeText">New Round</span> <kbd>␣</kbd></button>
+      </div>
+
+    </section>
+  </section>
+
+  <!-- Rechtes Panel: die laufende Bilanz -->
+  <aside class="seitenleiste">
+    <h2 class="seiten-titel">Session</h2>
+    <div class="info-zeile"><span>Wins</span><strong id="sessionSiege">0</strong></div>
+    <div class="info-zeile"><span>Losses</span><strong id="sessionNiederlagen">0</strong></div>
+    <div class="info-zeile"><span>Streak</span><strong id="sessionSerie">–</strong></div>
+    <h3 class="seiten-untertitel">Last rounds</h3>
+    <div class="ergebnis-reihe" id="letzteErgebnisse"></div>
+    <div class="seiten-deko">♦ ♣ ♥ ♠</div>
+  </aside>
+
+</main>
+
+<footer class="fusszeile">
+  Karten &amp; Mischen über die <a href="https://deckofcardsapi.com" target="_blank" rel="noopener">Deck of Cards API</a> · Schulprojekt 2026
+</footer>
+
+<!-- Kasse: Guthaben aufladen -->
+<div class="kasse-overlay versteckt" id="kasseOverlay">
+  <div class="kasse">
+    <button class="kasse-schliessen" id="kasseSchliessenBtn" title="Schließen">✕</button>
+    <h2 class="kasse-titel">♦ Cashier ♦</h2>
+    <p class="kasse-text">Top up your balance</p>
+    <div class="kasse-optionen">
+      <button class="btn btn-sekundaer kasse-option" data-betrag="500">+ 500&nbsp;€</button>
+      <button class="btn btn-gold kasse-option" data-betrag="1000">+ 1.000&nbsp;€</button>
+      <button class="btn btn-sekundaer kasse-option" data-betrag="2500">+ 2.500&nbsp;€</button>
+    </div>
+  </div>
+</div>
+
+<!-- Ebene für Konfetti, fliegende Chips und große Meldungen -->
+<div class="effekte-ebene" id="effekteEbene"></div>
+
+<script src="js/storage.js"></script>
+<script src="js/api.js"></script>
+<script src="js/sound.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

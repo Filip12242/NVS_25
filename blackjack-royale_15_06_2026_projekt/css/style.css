@@ -1,0 +1,1020 @@
+/* =====================================================
+   Blackjack Royale – zentrales Stylesheet
+   Casino-Look: dunkler Raum, grüner Filztisch, Gold
+   ===================================================== */
+
+:root {
+  --filz-hell: #1e6f50;
+  --filz-dunkel: #0a3526;
+  --hintergrund: #100e0b;
+  --gold: #d4af37;
+  --gold-hell: #f3dd8b;
+  --creme: #f5efdc;
+  --gruen: #2ecc71;
+  --rot: #e74c3c;
+  --blau: #9ecbff;
+  --text: #e9e4d6;
+  --text-gedimmt: #b1a98f;
+  --panel: #1a1712;
+  --panel-rand: #2e2818;
+  --schatten: 0 10px 30px rgba(0, 0, 0, 0.55);
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Inter", system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--sans);
+  color: var(--text);
+  background:
+    radial-gradient(1100px 500px at 50% -10%, rgba(212, 175, 55, 0.09), transparent 60%),
+    radial-gradient(900px 500px at 85% 110%, rgba(110, 18, 32, 0.25), transparent 55%),
+    var(--hintergrund);
+}
+
+main { flex: 1; width: 100%; }
+
+/* ---------- Kopfzeile & Navigation ---------- */
+
+.kopfzeile {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.9rem 2rem;
+  background: rgba(16, 14, 11, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--panel-rand);
+}
+
+.logo {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: 0.5px;
+  color: var(--creme);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo em { color: var(--gold); }
+
+.logo-pik {
+  color: var(--gold);
+  margin-right: 0.35rem;
+  text-shadow: 0 0 14px rgba(212, 175, 55, 0.65);
+}
+
+.navigation { display: flex; gap: 1.6rem; margin-left: auto; }
+
+.navigation a {
+  position: relative;
+  padding: 0.35rem 0;
+  color: var(--text-gedimmt);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.navigation a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -3px;
+  height: 2px;
+  background: var(--gold);
+  transition: right 0.25s ease;
+}
+
+.navigation a:hover { color: var(--creme); }
+.navigation a:hover::after,
+.navigation a.aktiv::after { right: 0; }
+.navigation a.aktiv { color: var(--gold-hell); }
+
+.guthaben-anzeige {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold-hell);
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.16), rgba(212, 175, 55, 0.04));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+.ton-knopf {
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid var(--panel-rand);
+  border-radius: 50%;
+  background: transparent;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.ton-knopf:hover { border-color: var(--gold); transform: scale(1.08); }
+
+.kasse-knopf {
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--gold-hell), var(--gold));
+  color: #241c05;
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #8a6f1c, 0 5px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease;
+}
+
+.kasse-knopf:hover { transform: translateY(-2px) scale(1.06); }
+
+/* ---------- Kasse (Einzahlen) ---------- */
+
+.kasse-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 4, 2, 0.65);
+  backdrop-filter: blur(6px);
+}
+
+.kasse {
+  position: relative;
+  width: min(420px, 92vw);
+  padding: 2.2rem 2rem;
+  text-align: center;
+  background: var(--panel);
+  border: 1px solid var(--gold);
+  border-radius: 20px;
+  box-shadow: 0 0 60px rgba(212, 175, 55, 0.18), var(--schatten);
+  animation: kasse-auf 0.3s cubic-bezier(0.2, 0.7, 0.3, 1.1);
+}
+
+@keyframes kasse-auf {
+  from { transform: scale(0.7) translateY(30px); opacity: 0; }
+}
+
+.kasse-titel {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  letter-spacing: 3px;
+  color: var(--gold-hell);
+}
+
+.kasse-text { margin: 0.5rem 0 1.4rem; color: var(--text-gedimmt); }
+
+.kasse-optionen {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.kasse-schliessen {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.9rem;
+  background: transparent;
+  border: none;
+  color: var(--text-gedimmt);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.kasse-schliessen:hover { color: var(--gold-hell); }
+
+/* Kurzes Aufleuchten, wenn Chips ankommen (Guthaben oder Dealer) */
+.puls { animation: puls-glanz 0.4s ease; }
+
+@keyframes puls-glanz {
+  50% {
+    transform: scale(1.12);
+    box-shadow: 0 0 18px rgba(212, 175, 55, 0.75);
+  }
+}
+
+/* ---------- Spieltisch ---------- */
+
+.spielbereich {
+  max-width: 1100px;
+  margin: 1.6rem auto 3rem;
+  padding: 0 1rem;
+}
+
+.tisch {
+  position: relative;
+  padding: 1.1rem 2rem 1.4rem;
+  border: 9px solid #3a2417;
+  border-radius: 26px 26px 190px 190px / 26px 26px 110px 110px;
+  /* Feines Rauschen über dem Verlauf verhindert Banding ("Zwiebelringe")
+     und wirkt gleichzeitig wie echte Filz-Struktur */
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='filz'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23filz)' opacity='0.07'/%3E%3C/svg%3E") repeat,
+    radial-gradient(ellipse at 50% 18%, var(--filz-hell), #14523b 45%, var(--filz-dunkel) 78%);
+  box-shadow:
+    inset 0 0 70px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 2px rgba(212, 175, 55, 0.3),
+    var(--schatten);
+}
+
+.tisch::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 2px solid rgba(212, 175, 55, 0.38);
+  border-radius: 18px 18px 170px 170px / 18px 18px 95px 95px;
+  pointer-events: none;
+}
+
+.hand-bereich {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.hand-titel {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-hell);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.punkte {
+  min-width: 2.8rem;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  color: var(--creme);
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 999px;
+  padding: 0.12rem 0.7rem;
+}
+
+.karten {
+  display: flex;
+  justify-content: center;
+  min-height: 7.9rem;
+  padding: 0.15rem 0;
+}
+
+/* ---------- Spielkarten (3D-Flip + Austeil-Animation) ---------- */
+
+.karte {
+  width: 5.5rem;
+  aspect-ratio: 226 / 314;
+  perspective: 1000px;
+  animation: austeilen 0.5s cubic-bezier(0.2, 0.7, 0.3, 1.1) backwards;
+  transition: transform 0.2s ease;
+}
+
+.karte:not(:first-child) { margin-left: -1.9rem; }
+
+.karte:hover {
+  transform: translateY(-9px) rotate(-1deg);
+  z-index: 5;
+  position: relative;
+}
+
+@keyframes austeilen {
+  from {
+    transform: translate(32vw, -28vh) rotate(12deg);
+    opacity: 0;
+  }
+}
+
+.karte-innen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.karte.verdeckt .karte-innen { transform: rotateY(180deg); }
+
+.karte-vorne,
+.karte-hinten {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+}
+
+.karte-vorne img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.karte-hinten {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 6px solid var(--creme);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.28), transparent 60%),
+    repeating-linear-gradient(45deg, #6e1220 0 8px, #571019 8px 16px);
+}
+
+.karte-hinten span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  font-size: 2.2rem;
+  color: var(--gold);
+  background: rgba(0, 0, 0, 0.28);
+}
+
+/* ---------- Tischmitte: Schriftzug & Nachricht ---------- */
+
+.tisch-mitte {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0.3rem 0;
+}
+
+.tisch-schriftzug { width: min(280px, 65%); }
+
+.tisch-schriftzug text {
+  font-family: var(--serif);
+  font-size: 22px;
+  letter-spacing: 6px;
+  fill: rgba(243, 221, 139, 0.55);
+}
+
+.nachricht {
+  min-height: 2rem;
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+  font-style: italic;
+  text-align: center;
+  color: var(--creme);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  transition: color 0.3s ease;
+}
+
+.nachricht.gewinn {
+  color: var(--gold-hell);
+  animation: pulsieren 0.9s ease infinite alternate;
+}
+
+.nachricht.verlust { color: var(--rot); }
+.nachricht.push { color: var(--blau); }
+
+@keyframes pulsieren {
+  from { text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+  to   { text-shadow: 0 0 30px rgba(212, 175, 55, 1); transform: scale(1.03); }
+}
+
+/* ---------- Steuerung: Panels, Chips, Buttons ---------- */
+
+.steuerung {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.6rem;
+  position: relative;
+  z-index: 2; /* über der dekorativen Innenlinie des Tisches */
+}
+
+/* Die Steuerung liegt direkt auf dem Filz */
+.panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  min-height: 5.4rem;
+  padding: 0.65rem 1.4rem;
+  background: rgba(5, 20, 14, 0.5);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.versteckt { display: none !important; }
+
+.chips { display: flex; gap: 0.8rem; }
+
+.chip {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 4px dashed rgba(255, 255, 255, 0.85);
+  color: #fff;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  box-shadow:
+    0 5px 0 rgba(0, 0, 0, 0.45),
+    0 8px 14px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 5px rgba(0, 0, 0, 0.18);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.chip:hover:not(:disabled) { transform: translateY(-5px) rotate(-5deg); }
+
+.chip:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.45),
+    inset 0 0 0 5px rgba(0, 0, 0, 0.18);
+}
+
+.chip:disabled { filter: grayscale(0.85) brightness(0.55); cursor: not-allowed; }
+
+.chip-10  { background: radial-gradient(circle at 35% 30%, #5dade2, #21618c 72%); }
+.chip-25  { background: radial-gradient(circle at 35% 30%, #58d68d, #1e8449 72%); }
+.chip-50  { background: radial-gradient(circle at 35% 30%, #ec7063, #922b21 72%); }
+.chip-100 { background: radial-gradient(circle at 35% 30%, #5d6d7e, #17202a 72%); border-color: var(--gold-hell); }
+.chip-500 { background: radial-gradient(circle at 35% 30%, #b387e0, #5b2c87 72%); border-color: var(--gold-hell); }
+
+.einsatz-buttons { display: flex; gap: 0.8rem; }
+
+.btn {
+  padding: 0.6rem 1.3rem;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* Tastatur-Hinweis im Button, z. B. Hit [H] */
+.btn kbd {
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.35rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  opacity: 0.65;
+}
+
+.btn-sekundaer kbd { border-color: rgba(255, 255, 255, 0.25); }
+
+.btn-gold {
+  background: linear-gradient(180deg, var(--gold-hell), var(--gold));
+  color: #241c05;
+  box-shadow: 0 4px 0 #8a6f1c, 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.btn-gruen {
+  background: linear-gradient(180deg, #2ecc71, #1e8449);
+  color: #06210f;
+  box-shadow: 0 4px 0 #14532d, 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.btn-gold:hover:not(:disabled),
+.btn-gruen:hover:not(:disabled) { transform: translateY(-2px); }
+
+.btn-gold:active:not(:disabled),
+.btn-gruen:active:not(:disabled) { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4); }
+
+.btn-sekundaer {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--panel-rand);
+}
+
+.btn-sekundaer:hover:not(:disabled) { border-color: var(--gold); color: var(--gold-hell); }
+
+.btn-gefahr {
+  background: #7b241c;
+  color: #fbeaea;
+  box-shadow: 0 4px 0 #4a120d, 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.btn-gefahr:hover:not(:disabled) { transform: translateY(-2px); }
+
+/* ---------- Inhaltsseiten (Regeln & Statistik) ---------- */
+
+.inhalt {
+  max-width: 900px;
+  margin: 2.5rem auto 4rem;
+  padding: 0 1.2rem;
+}
+
+.seitentitel {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  text-align: center;
+  color: var(--creme);
+}
+
+.seitentitel em { color: var(--gold); }
+
+.unterzeile {
+  margin: 0.5rem 0 1.4rem;
+  text-align: center;
+  color: var(--text-gedimmt);
+}
+
+.farben-deko {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 1.1rem;
+  text-indent: 1.1rem;
+}
+
+.farben-deko .rot { color: #e05858; }
+.farben-deko .schwarz { color: var(--gold); }
+
+.panel-karte {
+  margin-bottom: 1.6rem;
+  padding: 1.6rem 1.8rem;
+  background: var(--panel);
+  border: 1px solid var(--panel-rand);
+  border-radius: 16px;
+  box-shadow: var(--schatten);
+}
+
+.panel-karte h2 {
+  margin-bottom: 0.9rem;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  color: var(--gold-hell);
+}
+
+.panel-karte p,
+.panel-karte li { line-height: 1.65; }
+
+.panel-karte ol,
+.panel-karte ul {
+  display: grid;
+  gap: 0.5rem;
+  padding-left: 1.3rem;
+}
+
+.panel-karte li::marker { color: var(--gold); font-weight: 700; }
+
+.panel-karte li strong { color: var(--gold-hell); }
+
+table.werte { width: 100%; border-collapse: collapse; }
+
+.werte th,
+.werte td {
+  padding: 0.65rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid var(--panel-rand);
+}
+
+.werte th {
+  font-family: var(--serif);
+  letter-spacing: 0.5px;
+  color: var(--gold);
+}
+
+.werte tbody tr:last-child td { border-bottom: none; }
+
+.werte tbody tr:hover { background: rgba(212, 175, 55, 0.05); }
+
+/* ---------- Statistik ---------- */
+
+.statistik-gitter {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.stat-karte {
+  padding: 1.2rem 0.8rem;
+  text-align: center;
+  background: var(--panel);
+  border: 1px solid var(--panel-rand);
+  border-radius: 16px;
+  box-shadow: var(--schatten);
+}
+
+.stat-wert {
+  font-family: var(--serif);
+  font-size: 1.85rem;
+  color: var(--gold-hell);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-name {
+  margin-top: 0.3rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-gedimmt);
+}
+
+.diagramm {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 170px;
+  padding: 1.4rem 0.4rem 0;
+}
+
+.balken {
+  position: relative;
+  flex: 1;
+  min-height: 4px;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(180deg, var(--gold-hell), var(--gold));
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+}
+
+.balken:hover { background: linear-gradient(180deg, #fff3c4, var(--gold-hell)); }
+
+.balken:hover::after {
+  content: attr(data-wert);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 5px;
+  padding: 0.18rem 0.5rem;
+  border-radius: 6px;
+  background: #000;
+  border: 1px solid var(--panel-rand);
+  font-size: 0.72rem;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.hinweis-leer {
+  width: 100%;
+  align-self: center;
+  padding: 1.2rem 0;
+  text-align: center;
+  color: var(--text-gedimmt);
+}
+
+.hinweis-leer a { color: var(--gold); }
+
+.verlauf-liste {
+  display: grid;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.verlauf-eintrag {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0.9rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--panel-rand);
+  border-radius: 12px;
+}
+
+.ergebnis-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 0.78rem;
+}
+
+.badge-sieg       { background: rgba(46, 204, 113, 0.15); color: var(--gruen); border: 1px solid var(--gruen); }
+.badge-blackjack  { background: rgba(212, 175, 55, 0.2);  color: var(--gold-hell); border: 1px solid var(--gold); }
+.badge-niederlage { background: rgba(231, 76, 60, 0.15);  color: var(--rot); border: 1px solid var(--rot); }
+.badge-push       { background: rgba(158, 203, 255, 0.12); color: var(--blau); border: 1px solid var(--blau); }
+
+.verlauf-text { flex: 1; }
+
+.verlauf-text small { display: block; color: var(--text-gedimmt); }
+
+.verlauf-gewinn { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.verlauf-gewinn.plus  { color: var(--gruen); }
+.verlauf-gewinn.minus { color: var(--rot); }
+.verlauf-gewinn.neutral { color: var(--blau); }
+
+.statistik-aktionen { margin-top: 1.8rem; text-align: center; }
+
+/* ---------- Spielseite: alles auf eine Bildschirmhöhe ---------- */
+
+.spielseite { height: 100vh; height: 100svh; overflow: hidden; }
+
+.spielseite .spielbereich {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr) 210px;
+  grid-template-rows: minmax(0, 1fr);
+  gap: 1rem;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0.8rem auto;
+  padding: 0 1rem;
+}
+
+.spielseite .tisch {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.3rem;
+}
+
+.spielseite .fusszeile { padding: 0.4rem; font-size: 0.72rem; }
+
+/* Auf kleinen Bildschirmen lieber scrollen als abschneiden */
+@media (max-height: 640px), (max-width: 720px) {
+  .spielseite { height: auto; overflow: visible; }
+}
+
+/* ---------- Seitenpanels: Shoe & Session ---------- */
+
+.seitenleiste {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-height: 0;
+  overflow: auto;
+  padding: 1.2rem 1.1rem;
+  background: var(--panel);
+  border: 1px solid var(--panel-rand);
+  border-radius: 16px;
+  box-shadow: var(--schatten);
+}
+
+.seiten-titel {
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--panel-rand);
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--gold-hell);
+}
+
+.seiten-untertitel {
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-gedimmt);
+}
+
+.info-zeile {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.88rem;
+  color: var(--text-gedimmt);
+}
+
+.info-zeile strong {
+  color: var(--creme);
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.shoe-balken {
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid var(--panel-rand);
+  background: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.shoe-fuellung {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-hell));
+  transition: width 0.4s ease;
+}
+
+.seiten-hinweis {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--text-gedimmt);
+}
+
+.ergebnis-reihe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.ergebnis-badge.mini {
+  width: 1.8rem;
+  height: 1.8rem;
+  font-size: 0.62rem;
+}
+
+.seiten-deko {
+  margin-top: auto;
+  text-align: center;
+  font-size: 1.1rem;
+  letter-spacing: 0.7rem;
+  text-indent: 0.7rem;
+  color: rgba(212, 175, 55, 0.35);
+}
+
+/* Ohne Platz an den Seiten: Panels ausblenden, Tisch zentrieren */
+@media (max-width: 1240px) {
+  .seitenleiste { display: none; }
+  .spielseite .spielbereich {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 1100px;
+  }
+}
+
+/* ---------- Einsatz-Spot: hierhin fliegen die Chips ---------- */
+
+.einsatz-spot {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  margin-top: 0.2rem;
+}
+
+.einsatz-spot::before {
+  content: "BET";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed rgba(212, 175, 55, 0.45);
+  border-radius: 50%;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  color: rgba(243, 221, 139, 0.55);
+}
+
+.einsatz-stapel { position: absolute; inset: 0; }
+
+/* Auf dem Spot gestapelte Chips */
+.stapel-chip {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px dashed rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.78rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 0 0 3px rgba(0, 0, 0, 0.18);
+}
+
+.einsatz-betrag {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.05rem 0.6rem;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--gold-hell);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.einsatz-spot.leer .einsatz-betrag { display: none; }
+
+/* Chip im Flug vom Panel zum Einsatz-Spot */
+.chip-flug {
+  position: fixed;
+  z-index: 90;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px dashed rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.78rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5), inset 0 0 0 3px rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+}
+
+/* ---------- Effekte: Konfetti & große Meldungen ---------- */
+
+.effekte-ebene {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.konfetti {
+  position: absolute;
+  top: 0;
+  transform: translateY(-12vh);
+  will-change: transform;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.45);
+}
+
+.gross-meldung {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--serif);
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  letter-spacing: 4px;
+  color: var(--gold-hell);
+  text-shadow:
+    0 0 12px rgba(212, 175, 55, 0.9),
+    0 0 50px rgba(212, 175, 55, 0.6),
+    0 4px 10px rgba(0, 0, 0, 0.8);
+  animation: meldung-knall 2.2s cubic-bezier(0.2, 0.7, 0.3, 1.1) forwards;
+}
+
+@keyframes meldung-knall {
+  0%   { transform: translate(-50%, -50%) scale(0.2) rotate(-10deg); opacity: 0; }
+  12%  { transform: translate(-50%, -50%) scale(1.18) rotate(3deg); opacity: 1; }
+  22%  { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  78%  { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.35); opacity: 0; }
+}
+
+/* ---------- Fußzeile ---------- */
+
+.fusszeile {
+  padding: 1.2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-gedimmt);
+  border-top: 1px solid var(--panel-rand);
+}
+
+.fusszeile a { color: var(--gold); }
+
+/* ---------- Responsiv ---------- */
+
+@media (max-width: 720px) {
+  .kopfzeile { flex-wrap: wrap; gap: 0.8rem 1.2rem; padding: 0.8rem 1rem; }
+  .navigation { gap: 1.1rem; }
+  .tisch { padding: 1rem 0.8rem 1.6rem; border-width: 7px; }
+  .karte { width: 4.7rem; }
+  .karte:not(:first-child) { margin-left: -1.7rem; }
+  .karten { min-height: 6.9rem; }
+  .chip { width: 50px; height: 50px; font-size: 0.85rem; }
+  .panel { padding: 0.7rem; gap: 0.8rem; }
+}

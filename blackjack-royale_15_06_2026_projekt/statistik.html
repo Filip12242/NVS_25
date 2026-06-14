@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blackjack Royale – Statistik</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90' fill='%23d4af37'>♠</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="kopfzeile">
+  <a class="logo" href="index.html"><span class="logo-pik">♠</span>Blackjack <em>Royale</em></a>
+  <nav class="navigation">
+    <a href="index.html">Spiel</a>
+    <a href="regeln.html">Regeln</a>
+    <a href="statistik.html" class="aktiv">Statistik</a>
+  </nav>
+</header>
+
+<main class="inhalt">
+  <h1 class="seitentitel">Deine <em>Bilanz</em></h1>
+  <p class="unterzeile">Alle Runden werden lokal im Browser gespeichert.</p>
+
+  <section class="statistik-gitter">
+    <div class="stat-karte"><div class="stat-wert" id="kontostandWert">–</div><div class="stat-name">Kontostand</div></div>
+    <div class="stat-karte"><div class="stat-wert" id="gespieltWert">–</div><div class="stat-name">Runden</div></div>
+    <div class="stat-karte"><div class="stat-wert" id="siegeWert">–</div><div class="stat-name">Siege</div></div>
+    <div class="stat-karte"><div class="stat-wert" id="niederlagenWert">–</div><div class="stat-name">Niederlagen</div></div>
+    <div class="stat-karte"><div class="stat-wert" id="pushWert">–</div><div class="stat-name">Unentschieden</div></div>
+    <div class="stat-karte"><div class="stat-wert" id="blackjackWert">–</div><div class="stat-name">Blackjacks</div></div>
+    <div class="stat-karte"><div class="stat-wert" id="quoteWert">–</div><div class="stat-name">Siegquote</div></div>
+    <div class="stat-karte"><div class="stat-wert" id="gewinnWert">–</div><div class="stat-name">Größter Gewinn</div></div>
+  </section>
+
+  <section class="panel-karte">
+    <h2>Kontostand-Verlauf</h2>
+    <div class="diagramm" id="diagramm"></div>
+  </section>
+
+  <section class="panel-karte">
+    <h2>Letzte Runden</h2>
+    <ul class="verlauf-liste" id="verlaufListe"></ul>
+  </section>
+
+  <div class="statistik-aktionen">
+    <button class="btn btn-gefahr" id="zuruecksetzenBtn">Statistik &amp; Guthaben zurücksetzen</button>
+  </div>
+</main>
+
+<footer class="fusszeile">
+  Karten &amp; Mischen über die <a href="https://deckofcardsapi.com" target="_blank" rel="noopener">Deck of Cards API</a> · Schulprojekt 2026
+</footer>
+
+<script src="js/storage.js"></script>
+<script src="js/statistik.js"></script>
+</body>
+</html>
